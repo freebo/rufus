@@ -41,9 +41,7 @@ const argv = yargs
     .argv;
 
 
-binanceRest.allOrders({
-        symbol: currencypair  // Object is transformed into a query string, timestamp is automatically added
-    })
+binanceRest.allOrders(() => {
     .then((data) => {
         console.log(data);
     })
