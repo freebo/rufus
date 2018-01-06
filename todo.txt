@@ -1,0 +1,6 @@
+API erorr - esp 429
+Grab exchange rate from API
+Restrict to XXXBTC x 
+Twillio for texts
+Create API
+Promises in sms and elsewhere
