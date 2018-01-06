@@ -1,0 +1,24 @@
+{
+  "name": "rufus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-binance-api": "^0.3.0",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freebo/rufus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freebo/rufus/issues"
+  },
+  "homepage": "https://github.com/freebo/rufus#readme"
+}
