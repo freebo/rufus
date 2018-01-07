@@ -19,12 +19,6 @@ const sms = require('./sms');
 
 const argv = yargs
     .options({
-        t: {
-            default: 'TRXUSD', 
-            alias: 'ticker',
-            describe: 'Ticker',
-            string: true
-        },
         p: {
             default: 10,
             alias: 'percent',
@@ -40,14 +34,13 @@ binance.prices(function(ticker) {
     //console.log(JSON.stringify({ticker},null,2));
     traverse(ticker).forEach(function(value) {
          if (this.isLeaf) {
-             var key = this.key;
+            var key = this.key;
             //console.log(key, value);
             binance.prevDay(key, (prevDay, symbol) => {
-                //console.log(symbol+" previous day:", prevDay);
-                //console.log(symbol, "change since yesterday:"+prevDay.priceChangePercent+"%")
                 if (prevDay.priceChangePercent > argv.percent) {
                     if ((symbol.substr(symbol.length - 3)) === 'BTC') {
-                        console.log(symbol, "change since yesterday:"+prevDay.priceChangePercent+"%","price", value,"Volume");
+                        vol=parseFloat(prevDay.volume);
+                        console.log(symbol.padEnd(8), "change since yesterday:"+prevDay.priceChangePercent.padStart(8), "% price", value,"Volume", vol.toFixed(0).padStart(10));
                     }
                 }
             });
