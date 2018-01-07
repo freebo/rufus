@@ -40,7 +40,8 @@ binance.prices(function(ticker) {
                 if (prevDay.priceChangePercent > argv.percent) {
                     if ((symbol.substr(symbol.length - 3)) === 'BTC') {
                         vol=parseFloat(prevDay.volume);
-                        console.log(symbol.padEnd(8), "change since yesterday:"+prevDay.priceChangePercent.padStart(8), "% price", value,"Volume", vol.toFixed(0).padStart(10));
+                        spend=parseFloat(vol*value);
+                        console.log(symbol.padEnd(8), "change since yesterday:"+prevDay.priceChangePercent.padStart(8), "% price", value,"Volume", vol.toFixed(0).padStart(10), "Spent", spend.toFixed(0).padStart(8));
                     }
                 }
             });
