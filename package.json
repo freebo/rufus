@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "binance": "^1.1.2",
+    "mongoose": "^5.0.0-rc2",
     "node-binance-api": "^0.3.0",
     "traverse": "^0.6.6",
     "twilio": "^3.11.0",
