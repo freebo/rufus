@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
 var config = require ('../config.js');
+var mongoose = require('mongoose');
 
 console.log(config.connect_string);
 
