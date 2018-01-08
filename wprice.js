@@ -3,8 +3,9 @@ const yargs = require('yargs');
 var config = require('./config');
 const convert_aud = require('./convert_aud');
 
-const {mongooose} = require('./db/mongoose');
+const {mongoose} = require('./db/mongoose');
 const {Price} = require('./db/pricemodel');
+
 
 const binance = require('node-binance-api');
 binance.options({
@@ -50,10 +51,14 @@ const argv = yargs
         });
     price.save().then((user) => {
         console.log('Saved');
-        return price.save();
-    }).catch ((e) => {
-        console.log('An error occured', e)
+        console.log(JSON.stringify(user,undefined,2));
+        mongoose.disconnect();
+    }).catch((e) => {
+        console.log("error", e);
     });
+
+    
+
 });
 
 
@@ -61,6 +66,7 @@ binance.prevDay(argv.ticker,(prevDay, symbol) => {
   //console.log(symbol+" previous day:", prevDay);
   console.log(symbol, "change since yesterday:"+prevDay.priceChangePercent+"%")
 });
+
 
 
 // BTCUSDT
