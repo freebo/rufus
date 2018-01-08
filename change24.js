@@ -20,7 +20,7 @@ const sms = require('./sms');
 const argv = yargs
     .options({
         p: {
-            default: 10,
+            default: 30,
             alias: 'percent',
             describe: 'Percentage Change'
         }

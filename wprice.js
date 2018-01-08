@@ -33,38 +33,30 @@ const argv = yargs
     .alias('help','h')
     .argv;
 
-
-
-
-// binance.prices(function(ticker) {
     binance.prices((ticker, error) => {
-    var usd = ticker[argv.ticker] * ticker.BTCUSDT;
-    console.log('USD$', usd.toFixed(3));
-    convert_aud.do_conversion(usd, (error, results) => {
-    console.log('AUD$', results.aud_amount.toFixed(3))
-    console.log("Price of", argv.ticker, ticker[argv.ticker]);
-    });
-    var price = new Price ({
-        ticker: argv.ticker,
-        value: ticker[argv.ticker],
-        pricedAt:  new Date().getTime()
+        console.log(ticker);
+        var usd = ticker[argv.ticker] * ticker.BTCUSDT;
+        console.log('USD$', usd.toFixed(3));
+        convert_aud.do_conversion(usd, (error, results) => {
+        console.log('AUD$', results.aud_amount.toFixed(3))
+        console.log("Price of", argv.ticker, ticker[argv.ticker]);
         });
-    price.save().then((user) => {
-        console.log(JSON.stringify(user,undefined,2));
-        mongoose.disconnect();
-    }).catch((e) => {
-        console.log("error", e);
+        var price = new Price ({
+            ticker: argv.ticker,
+            value: ticker[argv.ticker],
+            pricedAt:  new Date().getTime()
+            });
+        price.save().then((user) => {
+            console.log(JSON.stringify(user,undefined,2));
+            mongoose.disconnect();
+        }).catch((e) => {
+            console.log("error", e);
     });
 
     
 
 });
 
-
-binance.prevDay(argv.ticker,(prevDay, symbol) => {
-  //console.log(symbol+" previous day:", prevDay);
-  console.log(symbol, "change since yesterday:"+prevDay.priceChangePercent+"%")
-});
 
 
 
