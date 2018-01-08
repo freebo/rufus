@@ -50,7 +50,6 @@ const argv = yargs
         pricedAt:  new Date().getTime()
         });
     price.save().then((user) => {
-        console.log('Saved');
         console.log(JSON.stringify(user,undefined,2));
         mongoose.disconnect();
     }).catch((e) => {
