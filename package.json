@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "applicationinsights": "^1.0.3",
     "binance": "^1.1.2",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.33",
