@@ -10,24 +10,22 @@ binance.options({
 
 
 const convert_aud = require('./convert_aud');
-const sms = require('./sms');
-
-// convert_aud.do_conversion(usd, (error, aud_amount) => {
-//     console.log('Converted ', aud_amount)
-
-// });
+// const {mongoose} = require('./db/mongoose');
+// const {Price} = require('./db/pricemodel');
 
 const argv = yargs
     .options({
         p: {
-            default: 30,
+            default: 30, 
             alias: 'percent',
-            describe: 'Percentage Change'
+            describe: '% Change',
+            string: true
         }
     })
     .help()
     .alias('help','h')
     .argv;
+
 
 
 binance.prices(function(ticker) {
@@ -37,7 +35,7 @@ binance.prices(function(ticker) {
             var key = this.key;
             //console.log(key, value);
             binance.prevDay(key, (prevDay, symbol) => {
-                if (prevDay.priceChangePercent > argv.percent) {
+                if (prevDay.priceChangePercent > argv.percent ) {
                     if ((symbol.substr(symbol.length - 3)) === 'BTC') {
                         vol=parseFloat(prevDay.volume);
                         spend=parseFloat(vol*value);
@@ -45,6 +43,6 @@ binance.prices(function(ticker) {
                     }
                 }
             });
-         };
+         }
     });
 });
