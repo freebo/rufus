@@ -16,7 +16,7 @@ const binanceRest = new api.BinanceRest({
      */
 });
 // binance.options({
-//   'APIKEY': config.api_key,
+//   'APIKEY': config.api_key, xxx
 //   'APISECRET': config.api_secret 
 // });
 
